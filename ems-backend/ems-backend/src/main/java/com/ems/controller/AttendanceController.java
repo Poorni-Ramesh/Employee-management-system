@@ -17,7 +17,6 @@ import com.ems.service.AttendanceService;
 
 @RestController
 @RequestMapping("/api/attendance")
-@CrossOrigin
 public class AttendanceController {
 
     @Autowired

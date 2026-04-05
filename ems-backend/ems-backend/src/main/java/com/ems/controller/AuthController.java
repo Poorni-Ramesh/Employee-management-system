@@ -15,7 +15,6 @@ import com.ems.entity.Employee;
 import com.ems.repository.AdminRepository;
 import com.ems.service.EmployeeService;
 
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

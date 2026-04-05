@@ -26,7 +26,6 @@ import com.ems.service.EmployeeService;
 
 @RestController
 @RequestMapping("/api/employees")
-@CrossOrigin(origins = "http://localhost:4200")
 public class EmployeeController {
 
     @Autowired
