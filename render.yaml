@@ -1,0 +1,20 @@
+# render.yaml — Blueprint for Render deployment
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: ems-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        sync: false # set manually in Render dashboard
+      - key: DATABASE_USERNAME
+        sync: false
+      - key: DATABASE_PASSWORD
+        sync: false
+      - key: PORT
+        value: "8080"
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false # e.g. https://your-frontend.onrender.com
