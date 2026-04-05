@@ -33,7 +33,7 @@ export class ManagerComponent implements OnInit {
     };
 
     this.http.get<any>(
-      "http://localhost:8081/api/employees/manager/employees",
+      "https://employee-management-system-3-ywre.onrender.com/api/employees/manager/employees",
       { headers }
     ).subscribe({
       next: (res) => {
@@ -52,7 +52,7 @@ export class ManagerComponent implements OnInit {
     const email = localStorage.getItem("email");
 
     this.http.get<any>(
-      `http://localhost:8081/api/employees/profile?email=${email}`
+      `https://employee-management-system-3-ywre.onrender.com/api/employees/profile?email=${email}`
     ).subscribe({
       next: (res) => {
         this.manager = res;
@@ -83,7 +83,7 @@ export class ManagerComponent implements OnInit {
     };
 
     this.http.delete(
-      `http://localhost:8081/api/employees/delete/${id}`,
+      `https://employee-management-system-3-ywre.onrender.com/api/employees/delete/${id}`,
       { headers }
     ).subscribe(() => {
       alert("Employee Deleted");

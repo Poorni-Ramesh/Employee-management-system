@@ -47,7 +47,7 @@ attendance: any[] = [];
       Authorization: `Bearer ${token}`
     });
 
-    this.http.get(`http://localhost:8081/api/employees/profile?email=${email}`, { headers })
+    this.http.get(`https://employee-management-system-3-ywre.onrender.com/api/employees/profile?email=${email}`, { headers })
       .subscribe({
         next: (res: any) => {
           this.employee = res;
@@ -68,7 +68,7 @@ attendance: any[] = [];
   const id = this.employee.id;   
   const token = localStorage.getItem("token");
 
-this.http.get(`http://localhost:8081/api/attendance`, {
+this.http.get(`https://employee-management-system-3-ywre.onrender.com/api/attendance`, {
   headers: {
     Authorization: `Bearer ${token}`
   }

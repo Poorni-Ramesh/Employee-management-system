@@ -32,7 +32,7 @@ export class EmployeeListComponent implements OnInit {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
-this.http.get<any[]>('http://localhost:8081/api/employees', { headers })
+this.http.get<any[]>('https://employee-management-system-3-ywre.onrender.com/api/employees', { headers })
       .subscribe({
         next: (data) => {
           console.log("DATA RECEIVED:", data); //  DEBUG DATA
@@ -79,7 +79,7 @@ isAdmin(): boolean {
         Authorization: `Bearer ${token}`
       });
 
-      this.http.delete(`http://localhost:8081/api/admin/${id}`, { headers , responseType:'text'})
+      this.http.delete(`https://employee-management-system-3-ywre.onrender.com/api/admin/${id}`, { headers , responseType:'text'})
         .subscribe({
           next: (res) => {
             alert("Employee deleted successfully ");

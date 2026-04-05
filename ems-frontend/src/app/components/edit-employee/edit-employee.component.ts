@@ -32,7 +32,7 @@ export class EditEmployeeComponent implements OnInit {
     });
 
     //  GET employee by ID
-    this.http.get<any>(`http://localhost:8081/api/employees/id/${id}`, { headers })
+    this.http.get<any>(`https://employee-management-system-3-ywre.onrender.com/api/employees/id/${id}`, { headers })
       .subscribe({
         next: (res) => {
           console.log("dataaa",res);
@@ -66,7 +66,7 @@ export class EditEmployeeComponent implements OnInit {
     });
 
     this.http.put(
-      `http://localhost:8081/api/employees/update/${this.employee.id}`,
+      `https://employee-management-system-3-ywre.onrender.com/api/employees/update/${this.employee.id}`,
       this.employee,
       { headers, responseType: 'text' }
     )
@@ -84,7 +84,7 @@ export class EditEmployeeComponent implements OnInit {
   resetPassword() {
     if(!confirm("Are yous sure you want to reset password?"))return;
   this.http.put(
-    `http://localhost:8081/api/employees/reset-password/${this.employee.id}`,
+    `https://employee-management-system-3-ywre.onrender.com/api/employees/reset-password/${this.employee.id}`,
     {},
     { responseType: 'text' }
   )

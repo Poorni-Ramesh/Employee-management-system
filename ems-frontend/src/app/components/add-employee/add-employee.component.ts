@@ -41,7 +41,7 @@ export class AddEmployeeComponent {
       Authorization: `Bearer ${token}`
     });
 
-    this.http.get(`http://localhost:8081/api/employees/id/${this.id}`, { headers })
+    this.http.get(`https://employee-management-system-3-ywre.onrender.com/api/employees/id/${this.id}`, { headers })
       .subscribe((res: any) => {
         this.employee = res;
       });
@@ -69,7 +69,7 @@ export class AddEmployeeComponent {
 
   console.log("Sending Data:", emp);
 
-  this.http.post('http://localhost:8081/api/employees', emp)
+  this.http.post('https://employee-management-system-3-ywre.onrender.com/api/employees', emp)
     .subscribe({
       next: (res: any) => {
         alert("Employee added successfully ✅");

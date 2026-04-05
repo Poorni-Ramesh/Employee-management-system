@@ -34,7 +34,7 @@ export class EditProfileComponent implements OnInit {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
-    this.http.get(`http://localhost:8081/api/employees/profile?email=${email}`,
+    this.http.get(`https://employee-management-system-3-ywre.onrender.com/api/employees/profile?email=${email}`,
     { headers}
         )     
         
@@ -64,7 +64,7 @@ updateProfile() {
     });
 
     this.http.put(
-      `http://localhost:8081/api/employees/update/${this.employee.id}`,
+      `https://employee-management-system-3-ywre.onrender.com/api/employees/update/${this.employee.id}`,
       this.employee,
       { headers }
     ).subscribe(() => {
@@ -95,7 +95,7 @@ changePassword() {
   });
 
   this.http.post(
-    `http://localhost:8081/api/employees/change-password`,
+    `https://employee-management-system-3-ywre.onrender.com/api/employees/change-password`,
     {
       currentPassword: this.currentPassword,
       newPassword: this.newPassword

@@ -70,12 +70,12 @@ export class AttendanceComponent implements OnInit {
   this.isLoading = true;
   const token = localStorage.getItem("token");
 
-// this.http.get<any>(`http://localhost:8081/api/attendance`, {
+// this.http.get<any>(`https://employee-management-system-3-ywre.onrender.com/api/attendance`, {
 //   headers: {
 //     Authorization: `Bearer ${token}`
 //   }
 // })
- this.http.get<any>(`http://localhost:8081/api/attendance/employee/${this.employeeId}`, {
+ this.http.get<any>(`https://employee-management-system-3-ywre.onrender.com/api/attendance/employee/${this.employeeId}`, {
     headers: { Authorization: `Bearer ${token}` }
   })
     .subscribe({
@@ -152,10 +152,10 @@ get paginatedAttendance() {
       employee: { id: this.employeeId }
     };
 
-    //this.http.post('http://localhost:8081/api/attendance', payload)
+    //this.http.post('https://employee-management-system-3-ywre.onrender.com/api/attendance', payload)
     const token = localStorage.getItem("token");
 
-this.http.post('http://localhost:8081/api/attendance', payload, {
+this.http.post('https://employee-management-system-3-ywre.onrender.com/api/attendance', payload, {
   headers: {
     Authorization: `Bearer ${token}`
   }
