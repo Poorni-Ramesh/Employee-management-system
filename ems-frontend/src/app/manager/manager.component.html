@@ -1,0 +1,55 @@
+
+<div class="manager-wrapper">
+  
+
+  <div class="manager-card">
+
+    <!-- HEADER -->
+    <div class="header">
+      <h3>HELLO MANAGER</h3>
+      
+      <button class="profile-btn" routerLink="/profile">My Profile</button>
+    </div>
+    <p><strong>My Team Count:</strong> {{ employees.length }}</p>
+     
+     <input 
+      type="text" 
+      [(ngModel)]="searchText"
+      (ngModelChange)="onSearchChange()" 
+      placeholder="Search employee..."
+      class="search-box"
+    />
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Department</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let emp of filteredEmployees()">
+          <td>{{ emp.name }}</td>
+          <td>{{ emp.email }}</td>
+          <td>{{ emp.department }}</td>
+          <td>
+            <button class="edit-btn" (click)="editEmployee(emp.id)">Edit</button>
+            <button class="delete-btn" (click)="deleteEmployee(emp.id)">Delete</button>
+            <button (click)="goToAttendance(emp.id)">Attendance</button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+
+    <p *ngIf="employees.length === 0" class="no-data">
+      No employees found
+    </p>
+
+  </div>
+
+</div>

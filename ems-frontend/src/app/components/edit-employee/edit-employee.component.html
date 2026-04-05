@@ -1,0 +1,65 @@
+<div class="form-wrapper">
+
+  <div class="form-card">
+
+    <h2>Edit Employee</h2>
+     
+
+    <p class="subtitle">Update employee details</p>
+
+    <form (ngSubmit)="updateEmployee()" #empForm="ngForm">
+
+      <div class="input-group">
+        <input type="text"
+               [(ngModel)]="employee.name"
+               name="name"
+               placeholder="Name"
+               required>
+      </div>
+
+      <div class="input-group">
+        <input type="email"
+               [(ngModel)]="employee.email"
+               name="email"
+               placeholder="Email"
+               >
+      </div>
+
+      <div class="input-group">
+           <select [(ngModel)]="employee.department" name="department">
+           <option value="" disabled selected hidden>Select Department</option>
+           <option *ngFor="let dept of ['IT','HR','Finance','Marketing','Sales','Operations']"
+             [value]="dept">
+           {{ dept }}
+            </option>
+          </select>
+     </div>
+      <div class="input-group">
+        <select [(ngModel)]="employee.role" name="role">
+          <option value="" disabled selected hidden>Select Role</option>
+          <option value="EMPLOYEE">EMPLOYEE</option>
+          <option value="MANAGER">MANAGER</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <select [(ngModel)]="employee.status" name="status">
+          <option value="" disabled>Select Status</option>
+          <option value="ACTIVE">ACTIVE</option>
+          <option value="INACTIVE">INACTIVE</option>
+        </select>
+      </div>
+
+      <button type="submit" [disabled]="empForm.invalid">
+        Update Employee
+      </button>
+
+      <button type="button" class="secondary-btn" (click)="resetPassword()">
+        Reset Password
+      </button>
+
+    </form>
+
+  </div>
+
+</div>

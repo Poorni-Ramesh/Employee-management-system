@@ -1,0 +1,101 @@
+
+<div class="layout">
+ 
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+   
+        <nav>
+
+      <!--  Dashboard (ADMIN only) -->
+      <a *ngIf="role === 'ADMIN' || role === 'ROLE_ADMIN'" routerLink="/dashboard">Dashboard</a>
+
+      <!--  Employee List (ADMIN + MANAGER) -->
+      <a *ngIf="role === 'ADMIN' || role ==='ROLE_ADMIN'" routerLink="/employees">
+        Employees
+      </a>
+
+      <!--  Add Employee (ADMIN only) -->
+      <a *ngIf="role === 'ADMIN' || role === 'ROLE_ADMIN'" routerLink="/add-employee">
+        Add Employee
+      </a>
+      
+    </nav>
+  </aside>
+
+  
+  <div class="content">
+ 
+     <h2>Dashboard</h2>
+      <h2>HELLO ADMIN!</h2>
+   
+    <p *ngIf="isLoading" class="loading">Loading dashboard...</p>
+
+    <!-- Main Content -->
+    <div *ngIf="!isLoading">
+
+      <!-- Cards -->
+      <div class="cards">
+        <div class="card">
+          <h3>Total Employees</h3>
+          <p>{{ stats.total }}</p>
+        </div>
+
+        <div class="card">
+          <h3>Active Employees</h3>
+          <p>{{ stats.active }}</p>
+        </div>
+
+        <div class="card">
+          <h3>Inactive Employees</h3>
+          <p>{{ stats.inactive }}</p>
+        </div>
+
+        <div class="card">
+          <h3>Departments</h3>
+          <p>{{ stats.departments }}</p>
+        </div>
+      </div>
+
+      <!-- Charts -->
+      <div class="charts">
+        <div class="chart-box">
+          <h3>Employee Status</h3>
+          <canvas id="barChart"></canvas>
+        </div>
+
+        <div class="chart-box">
+          <h3>Department Distribution</h3>
+          <canvas id="pieChart"></canvas>
+        </div>
+      </div>
+
+    
+      <div class="recent">
+        <h3>Recent Employees</h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let emp of recentEmployees">
+              <td>{{ emp.name }}</td>
+              <td>{{ emp.email }}</td>
+              <td>{{ emp.role }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

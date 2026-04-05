@@ -1,0 +1,95 @@
+
+.form-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3c72, #2a5298, #6a11cb);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.form-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 30px;
+
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+/* Title */
+h2 {
+  text-align: center;
+  margin-bottom: 5px;
+  color: #2a2a2a;
+}
+
+.subtitle {
+  text-align: center;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+
+.input-group {
+  margin-bottom: 20px;
+  display: block;
+  
+}
+
+
+input,
+select {
+  width: 100%;
+  height: 40px;
+  padding: 5px;
+
+  border-radius: 8px;
+  border: 1px solid #ddd;
+
+  font-size: 14px;
+  transition: 0.3s;
+  box-sizing: border-box;
+}
+
+
+input:focus,
+select:focus {
+  border-color: #6a11cb;
+  box-shadow: 0 0 5px rgba(170, 131, 212, 0.4);
+  outline: none;
+}
+
+button {
+  width: 100%;
+  height: 42px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #6e80d3, #764ba2);
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* 🔥 SECOND BUTTON */
+.secondary-btn {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+}
+
+.secondary-btn:hover {
+  box-shadow: 0 8px 20px rgba(255, 65, 108, 0.4);
+}
+

@@ -1,0 +1,112 @@
+
+<div  class="attendance-container">
+
+  <h2>📅 Attendance</h2>
+
+
+    <!-- FORM -->
+    <div class="attendance-card" *ngIf="role === 'MANAGER'">
+
+      <h3>Mark Attendance</h3>
+
+      <div class="form-row">
+        <label>Status</label>
+        <select [(ngModel)]="attendance.status">
+          <option value="">Select</option>
+          <option value="PRESENT">Present</option>
+          <option value="ABSENT">Absent</option>
+        </select>
+      </div>
+
+      <!-- CHECK-IN -->
+      <div class="form-row">
+        <label>Check In</label>
+        <input type="time"
+               [(ngModel)]="attendance.checkIn"
+               [disabled]="alreadyMarked">
+      </div>
+
+      <!-- CHECK-OUT -->
+      <div class="form-row">
+        <label>Check Out</label>
+        <input type="time"
+               [(ngModel)]="attendance.checkOut"
+               [disabled]="!alreadyMarked || hasCheckedOut">
+      </div>
+
+      <!-- BUTTON -->
+      <button *ngIf="role === 'MANAGER'"
+        (click)="saveAttendance()"
+        [disabled]="hasCheckedOut || (!attendance.checkIn && !attendance.checkOut)">
+        Save
+      </button>
+
+      <!-- STATUS -->
+      <p *ngIf="alreadyMarked && !hasCheckedOut">
+        🟡 Checked in — complete checkout
+      </p>
+
+      <p *ngIf="hasCheckedOut">
+        ✅ Attendance completed
+      </p>
+
+    </div>
+
+    <!-- TABLE -->
+    <div class="attendance-card">
+
+      <h3>Attendance Records</h3>
+
+      <p *ngIf="isLoading">Loading...</p>
+
+      <table *ngIf="!isLoading && paginatedAttendance.length > 0" border="1">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let a of paginatedAttendance">
+            <td [ngStyle]="{'font-weight': isToday(a.date) ? 'bold' : 'normal'}">
+              {{a.date}}
+            </td>
+            <td>{{a.status}}</td>
+            <td>{{a.checkIn || '-'}}</td>
+            <td>{{a.checkOut || '-'}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- PAGINATION -->
+      <div *ngIf="!showAll && fullAttendance.length > pageSize">
+        <button (click)="prevPage()" [disabled]="page === 1">⬅ Prev</button>
+        <button (click)="nextPage()" 
+                [disabled]="page * pageSize >= fullAttendance.length">
+          Next ➡
+        </button>
+      </div>
+
+      <!-- VIEW ALL -->
+      <button 
+        class="view-btn" 
+        *ngIf="fullAttendance.length > pageSize"
+        (click)="toggleView()">
+        {{ showAll ? 'Show Less' : 'View All' }}
+      </button>
+
+      <!-- EMPTY -->
+      <p *ngIf="!isLoading && paginatedAttendance.length === 0">
+        No attendance records
+      </p>
+
+    </div>
+
+  <!-- </div> -->
+
+</div>
+
+
