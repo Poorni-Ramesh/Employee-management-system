@@ -22,18 +22,20 @@ public class TestController {
     @GetMapping("/test-seed")
     public ResponseEntity<String> testSeed() {
         try {
-            if (adminRepository.findByEmail("admin@gmail.com") == null) {
-                Admin admin = new Admin();
+            Admin admin = adminRepository.findByEmail("admin@gmail.com");
+            if (admin == null) {
+                admin = new Admin();
+                admin.setEmail("admin@gmail.com");
                 admin.setName("Admin");
-                admin.setEmail("admin@gmail.com"); 
-                admin.setPassword(passwordEncoder.encode("admin123")); 
                 admin.setRole("ADMIN");
                 admin.setStatus("ACTIVE"); 
-                adminRepository.save(admin);
-                return ResponseEntity.ok("Successfully seeded Admin user! (admin@gmail.com / admin123)");
-            } else {
-                return ResponseEntity.ok("Admin already exists!");
             }
+            
+            // Force reset the password to exactly this: admin123
+            admin.setPassword(passwordEncoder.encode("admin123")); 
+            adminRepository.save(admin);
+            
+            return ResponseEntity.ok("Successfully force-reset Admin user! Login with email: admin@gmail.com and password: admin123 (No @ symbol!)");
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error talking to database: " + e.getMessage() + " | " + e.toString());
         }
