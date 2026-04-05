@@ -1,12 +1,9 @@
-FROM eclipse-temurin:17-jdk
+FROM maven:3.9.9-eclipse-temurin-17
 
 WORKDIR /app
 
 COPY . .
 
-RUN apt-get update && apt-get install -y maven
+RUN mvn -f ems-backend/pom.xml clean package -DskipTests
 
-# explicitly point to pom.xml
-RUN mvn -f ems-backend/pom.xml clean install -DskipTests
-
-CMD ["java", "-jar", "ems-backend/target/*.jar"]
+CMD ["java", "-jar", "ems-backend/target/ems-backend-0.0.1-SNAPSHOT.jar"]
