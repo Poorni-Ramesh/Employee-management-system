@@ -31,15 +31,11 @@ public class EmployeeService {
 
     public Employee saveEmployee(Employee e) {
 
-        //  FIND MANAGER BASED ON DEPARTMENT
-        Employee manager = repo
-            .findByDepartmentAndRole(e.getDepartment(),Role.MANAGER)
-            .orElseThrow(() ->
-                new RuntimeException("Manager not found for department: " + e.getDepartment())
-            );
-
-        // ASSIGN MANAGER
-        e.setManager(manager);
+        //  FIND MANAGER BASED ON DEPARTMENT (ONLY IF NEW USER IS NOT A MANAGER)
+        if (e.getRole() == Role.EMPLOYEE) {
+            repo.findByDepartmentAndRole(e.getDepartment(), Role.MANAGER)
+                .ifPresent(manager -> e.setManager(manager));
+        }
 
         // PASSWORD LOGIC
         String password = e.getPassword();
