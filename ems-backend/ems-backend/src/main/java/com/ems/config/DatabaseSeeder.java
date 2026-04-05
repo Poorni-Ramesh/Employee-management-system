@@ -18,8 +18,8 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Check if admin already exists
-        if (adminRepository.count() == 0) {
+        // Check if admin@gmail.com already exists
+        if (adminRepository.findByEmail("admin@gmail.com") == null) {
             System.out.println("No Admin found in database. Seeding a default Admin...");
             
             Admin admin = new Admin();
