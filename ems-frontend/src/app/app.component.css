@@ -1,12 +1,16 @@
 
 .header {
 
-   color: #333;
+  color: #333;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   padding: 0 30px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   background-color: rgb(43, 40, 40);
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .logo-section {
