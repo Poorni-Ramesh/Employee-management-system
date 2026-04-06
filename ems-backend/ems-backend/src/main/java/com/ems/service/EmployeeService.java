@@ -31,15 +31,19 @@ public class EmployeeService {
 
     public Employee saveEmployee(Employee e) {
 
-        //  FIND MANAGER BASED ON DEPARTMENT
-        Employee manager = repo
-            .findByDepartmentAndRole(e.getDepartment(),Role.MANAGER)
-            .orElseThrow(() ->
-                new RuntimeException("Manager not found for department: " + e.getDepartment())
-            );
-
-        // ASSIGN MANAGER
-        e.setManager(manager);
+        // FIND MANAGER BASED ON DEPARTMENT (ONLY IF NEW EMPLOYEE IS NOT A MANAGER)
+        if (e.getRole() != Role.MANAGER) {
+            Employee manager = repo
+                .findByDepartmentAndRole(e.getDepartment(), Role.MANAGER)
+                .orElseThrow(() ->
+                    new RuntimeException("Manager not found for department: " + e.getDepartment())
+                );
+            // ASSIGN MANAGER
+            e.setManager(manager);
+        } else {
+            // Managers don't need a manager assigned
+            e.setManager(null);
+        }
 
         // PASSWORD LOGIC
         String password = e.getPassword();
@@ -82,8 +86,12 @@ public class EmployeeService {
     @Transactional
     public void delete(Long id) {
 
-        if (!repo.existsById(id)) {
-            throw new RuntimeException("Employee not found");
+        Employee emp = repo.findById(id)
+            .orElseThrow(() -> new RuntimeException("Employee not found"));
+
+        // Safeguard: Prevent deleting a MANAGER directly
+        if (emp.getRole() == Role.MANAGER) {
+            throw new RuntimeException("Cannot delete a MANAGER directly. Please re-assign their employees and change their role first.");
         }
 
         //  1: delete attendance (VERY IMPORTANT)
