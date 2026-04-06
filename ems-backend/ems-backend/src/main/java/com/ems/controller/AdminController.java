@@ -17,7 +17,7 @@ import com.ems.entity.Employee;
 import com.ems.service.EmployeeService;
 
 import jakarta.servlet.http.HttpServletRequest;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {
