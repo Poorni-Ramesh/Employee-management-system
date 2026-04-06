@@ -14,10 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ems.entity.Attendance;
 import com.ems.service.AttendanceService;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/attendance")
-@CrossOrigin
 public class AttendanceController {
 
     @Autowired

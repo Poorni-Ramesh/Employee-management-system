@@ -23,7 +23,7 @@ import com.ems.config.JwtUtil;
 import com.ems.entity.Employee;
 
 import com.ems.service.EmployeeService;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/employees")
 @CrossOrigin(origins = "*")
