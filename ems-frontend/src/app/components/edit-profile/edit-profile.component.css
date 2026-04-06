@@ -1,0 +1,88 @@
+
+.edit-wrapper {
+  min-height: 90vh;
+  background: #f4f7fb;   
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.edit-card {
+  width: 400px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+h3 {
+  margin-top: 20px;
+  color: #34495e;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+
+.input-box,
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #3498db;
+}
+/* Primary Button */
+.primary-btn {
+  width: 100%;
+  padding: 10px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.primary-btn:hover {
+  background: #2980b9;
+}
+
+/* Secondary Button */
+.secondary-btn {
+  width: 100%;
+  padding: 8px;
+  background: #ecf0f1;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.show-pass label {
+  display: flex;         
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;    
+  font-size: 13px;
+  cursor: pointer;
+}
+.show-pass {
+  width: 100px;
+  display: flex;
+  align-items: center;
+ 
+  margin-top: 6px;
+ 
+  color: #555;
+}

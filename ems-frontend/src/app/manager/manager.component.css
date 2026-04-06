@@ -1,0 +1,94 @@
+
+.manager-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 50px;
+}
+
+
+.manager-card {
+  width: 90%;
+  max-width: 900px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin: 0;
+}
+
+.profile-btn {
+  background: #2196F3;
+  color: white;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: #667eea;
+  color: white;
+  padding: 10px;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+
+button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin: 3px;
+}
+
+
+.edit-btn {
+  background: #4CAF50;
+  color: white;
+}
+
+
+.delete-btn {
+  background: #f44336;
+  color: white;
+}
+
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* EMPTY TEXT */
+.no-data {
+  text-align: center;
+  margin-top: 15px;
+  color: gray;
+}
+.search-box {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}

@@ -1,0 +1,85 @@
+
+
+<div class="page-wrapper">
+
+  <div class="table-card">
+    <p class="subtitle">Employee List</p>
+     <input 
+    type="text"
+    placeholder="Search employee..."
+    [(ngModel)]="searchText"
+    (input)="searchEmployee()"
+    class="search-box"
+  />
+
+<!-- 
+    <h2>Employee Management System</h2> -->
+   
+
+    <!-- Loading -->
+    <p *ngIf="isLoading" class="loading">Loading employees...</p>
+
+    <!-- No Data -->
+    <p *ngIf="!isLoading && employees.length === 0" class="no-data">
+      No employees found
+    </p>
+
+    <!-- Table -->
+    <table *ngIf="!isLoading && filteredEmployees.length > 0">
+
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Department</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+    <tbody>
+
+  <ng-container *ngFor="let emp of filteredEmployees">
+
+    <tr *ngIf="!isManager() || emp.role !== 'ADMIN'">
+
+      <td>{{ emp.name }}</td>
+      <td>{{ emp.email }}</td>
+
+      <td>
+        <span class="role" [ngClass]="emp.role.toLowerCase()">
+          {{ emp.role }}
+        </span>
+      </td>
+
+      <td>{{ emp.department }}</td>
+
+      <td>
+        <span class="status" [ngClass]="emp.status.toLowerCase()">
+          {{ emp.status }}
+        </span>
+      </td>
+
+      <td>
+        <!-- <button *ngIf="isAdmin() || isManager()" (click)="editEmployee(emp.id)">
+          Edit
+        </button> -->
+        <button (click)="editEmployee(emp.id)" class="edit-btn">Edit</button>
+
+        <button *ngIf="isAdmin() || isManager()" (click)="deleteEmployee(emp.id)" class="delete-btn">
+          Delete
+        </button>
+      </td>
+
+    </tr>
+
+  </ng-container>
+
+</tbody>
+
+    </table>
+
+  </div>
+
+</div>

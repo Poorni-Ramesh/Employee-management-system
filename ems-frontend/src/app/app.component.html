@@ -1,0 +1,15 @@
+
+<header class="header">
+  <div class="logo-section">
+  <img src="assets/logo.jpeg" width="50" height="50" alt="">
+    <span class="title">Employee Management System</span>
+  </div>
+
+   <button *ngIf="showLogout "
+    class="logout-btn" (click)="logout()">
+    Logout
+  </button>
+</header>
+
+
+<router-outlet></router-outlet>

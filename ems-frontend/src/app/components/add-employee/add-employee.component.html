@@ -1,0 +1,116 @@
+<div class="form-wrapper">
+
+  <div class="form-card">
+
+    <h2>Add Employee</h2>
+    <p class="subtitle">Enter employee details</p>
+    <form #empForm="ngForm" (ngSubmit)="addEmployee(empForm)">
+
+  <!-- NAME -->
+  <div class="input-group">
+    <input type="text"
+           [(ngModel)]="employee.name"
+           name="name"
+           placeholder="Name"
+           required
+           #name="ngModel">
+
+    <div class="error" *ngIf="name.invalid && name.touched">
+      Name is required
+    </div>
+  </div>
+
+  <!-- EMAIL -->
+  <div class="input-group">
+    <input type="email"
+           [(ngModel)]="employee.email"
+           name="email"
+           placeholder="Email"
+           required
+           #email="ngModel">
+
+    <div class="error" *ngIf="email.invalid && email.touched">
+      Valid email is required
+    </div>
+  </div>
+    <!-- PASSWORD (ADD HERE) -->
+<div class="input-group">
+  <input type="password"
+         [(ngModel)]="employee.password"
+         name="password"
+         placeholder="Password (default:emp@123)"
+         minlength="4"
+         #password="ngModel">
+
+  <div class="error" *ngIf="password.invalid && password.touched">
+    Password must be at least 4 characters
+  </div>
+</div>
+
+
+  <!-- DEPARTMENT -->
+  <div class="input-group">
+    <select [(ngModel)]="employee.department"
+            name="department"
+            required
+            #dept="ngModel">
+
+      <option value="" disabled>Select Department</option>
+      <option value="IT">IT</option>
+      <option value="HR">HR</option>
+      <option value="Finance">Finance</option>
+      <option value="Marketing">Marketing</option>
+      <option value="Sales">Sales</option>
+      <option value="Operations">Operations</option>
+    </select>
+
+    <div class="error" *ngIf="dept.invalid && dept.touched">
+      Department is required
+    </div>
+  </div>
+
+  <!-- ROLE -->
+  <div class="input-group">
+    <select [(ngModel)]="employee.role"
+            name="role"
+            required
+            #role="ngModel">
+
+      <option value="" disabled>Select Role</option>
+      <option value="MANAGER">MANAGER</option>
+      <option value="EMPLOYEE">EMPLOYEE</option>
+    </select>
+
+    <div class="error" *ngIf="role.invalid && role.touched">
+      Role is required
+    </div>
+  </div>
+
+  <!-- STATUS -->
+  <div class="input-group">
+    <select [(ngModel)]="employee.status"
+            name="status"
+            required
+            #status="ngModel">
+
+      <option value="" disabled>Select Status</option>
+      <option value="ACTIVE">ACTIVE</option>
+      <option value="INACTIVE">INACTIVE</option>
+    </select>
+
+    <div class="error" *ngIf="status.invalid && status.touched">
+      Status is required
+    </div>
+  </div>
+
+  <!-- BUTTON -->
+  <button type="submit" >
+    Add Employee
+  </button>
+
+</form>
+    
+
+  </div>
+
+</div>

@@ -1,0 +1,65 @@
+
+.header {
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgb(43, 40, 40);
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+}
+
+.logo-section {
+  display: flex;
+  color: white;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.logo-section img {
+  width: 50px;
+  height: 50px;
+  margin: 9px;
+  border-radius: 80px;
+}
+img {
+  width: 50px;
+  height: auto;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  white-space: normal;
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 16px;
+  }
+
+  .header {
+    padding: 10px 15px;
+  }
+}
+ 
+.logout-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+.logout-btn:hover {
+  background: #c0392b;
+}

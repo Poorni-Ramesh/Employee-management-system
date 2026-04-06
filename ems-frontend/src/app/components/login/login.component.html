@@ -1,0 +1,69 @@
+<div class="login-wrapper">
+
+  <div class="form-box">
+  
+    <h2>Welcome 👋</h2>
+    <p class="subtitle">Login to your account</p>
+
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+
+      <!-- EMAIL -->
+      <div class="input-group">
+        <input
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          #emailRef="ngModel"
+          placeholder="Enter email "
+          required
+        />
+        <small *ngIf="emailRef.invalid && emailRef.touched" style="color:red;">
+        Please enter a valid email (example: user@gmail.com)
+      </small>
+        
+      </div>
+
+      <small *ngIf="emailRef.invalid && emailRef.touched" style="color:red;">
+        Email is required
+      </small>
+
+      <!-- PASSWORD -->
+     <div class="input-group">
+
+  <div style="display: flex; align-items: center; gap: 10px;">
+
+    <!-- Password Input -->
+    <input
+      [type]="showPassword ? 'text' : 'password'"
+      [(ngModel)]="password"
+      name="password"
+      #passRef="ngModel"
+      placeholder="Enter password"
+      required
+    />
+
+    
+
+  </div>
+  <!-- Checkbox -->
+    <div class="checkbox" >
+    <input type="checkbox" (change)="togglePassword()" id="showPass">
+    <label for="showPass">Show Password</label>
+  </div>
+
+</div>
+
+      <small *ngIf="passRef.invalid && passRef.touched" style="color:red;">
+        Password is required
+      </small>
+
+      <!-- BUTTON -->
+      <button type="submit" [disabled]="loginForm.invalid">
+        Login
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
