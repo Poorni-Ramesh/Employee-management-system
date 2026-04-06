@@ -1,4 +1,5 @@
 body {
+  margin :0;
   background: linear-gradient(to right, #e3f2fd, #f5f7fa);
   font-family: Arial, sans-serif;
 }
